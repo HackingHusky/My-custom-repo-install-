@@ -34,6 +34,10 @@ Follow these quick commands to clone, configure, and execute the initialization 
    ```bash
    nano kali-setup.sh
    ```
+   Or
+   ```bash
+   git clone https://github.com/HackingHusky/My-custom-repo-install && cd My-custom-repo-install
+   ```
 
 2. **Paste the code** from your setup script into the text editor, save with `CTRL+O`, and exit with `CTRL+X`.
 
