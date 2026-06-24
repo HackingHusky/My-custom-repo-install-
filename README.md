@@ -1,5 +1,6 @@
 # Kali Linux Post-Installation Provisioning Script
-<img width="512" height="286" alt="image" src="https://github.com/user-attachments/assets/5fd86523-4cf1-4f53-9031-264ed3c00b7b" />
+<img width="1376" height="768" alt="image" src="https://github.com/user-attachments/assets/30ef194f-11b2-48e6-ae71-d48cc20d5675" />
+
 
 
 An automated bash post-installation script designed to rapidly provision a fresh Kali Linux installation. It updates the system core, extracts foundational wordlists, structures clean workspaces, configures an advanced terminal layout emulator, and installs critical Active Directory and Web Enumeration tools directly from official repositories.
