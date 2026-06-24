@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ensure the script is run as root
-if [ "$EUID" -ne 0 ]; then
+if [ $EUID -ne 0 ]; then
   echo "[-] Please run this script with sudo."
   exit 1
 fi
@@ -27,7 +27,7 @@ mkdir -p /home/$SUDO_USER/Workspace/{Recon,Exploits,Wordlists,OSINT}
 chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Workspace
 
 # 4. Install Requested Tools and Utilities
-echo "[+] Installing Terminator and requested specialized pentesting tools..."
+echo "[+] Installing requested specialized pentesting tools..."
 apt install -y \
   terminator \
   ligolo-ng \
@@ -35,7 +35,8 @@ apt install -y \
   kerberoast \
   dirsearch \
   feroxbuster \
-  evil-winrm-py
+  evil-winrm-py \
+  certipy-ad
 
 # 5. Fix common configuration bottlenecks
 echo "[+] Configuring quality of life system tweaks..."
@@ -45,11 +46,11 @@ gsettings set org.gnome.desktop.screensaver lock-enabled false 2>/dev/null
 
 # 6. Initialize Terminator configuration file for the standard user
 echo "[+] Generating baseline configuration for Terminator..."
-USER_HOME="/home/$SUDO_USER"
-TERM_CONFIG_DIR="$USER_HOME/.config/terminator"
+USER_HOME=/home/$SUDO_USER
+TERM_CONFIG_DIR=$USER_HOME/.config/terminator
+mkdir -p $TERM_CONFIG_DIR
 
-mkdir -p "$TERM_CONFIG_DIR"
-cat << EOF > "$TERM_CONFIG_DIR/config"
+cat << EOF > $TERM_CONFIG_DIR/config
 [global_config]
   suppress_multiple_term_dialog = True
 [keybindings]
@@ -57,8 +58,8 @@ cat << EOF > "$TERM_CONFIG_DIR/config"
   [[default]]
     background_darkness = 0.85
     background_type = transparent
-    cursor_color = "#aaaaaa"
-    foreground_color = "#ffffff"
+    cursor_color = #aaaaaa
+    foreground_color = #ffffff
     show_titlebar = False
     scrollback_lines = 5000
 [layouts]
@@ -67,12 +68,12 @@ cat << EOF > "$TERM_CONFIG_DIR/config"
       parent = window0
       type = Terminal
     [[[window0]]]
-      parent = ""
+      parent = 
       type = Window
 [plugins]
 EOF
 
 # Correct ownership of the configuration files
-chown -R $SUDO_USER:$SUDO_USER "$USER_HOME/.config"
+chown -R $SUDO_USER:$SUDO_USER $USER_HOME/.config
 
-echo "[+] Setup completed successfully! Your environment is ready."
+echo "[+] Setup completed successfully!"
