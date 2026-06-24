@@ -1,4 +1,6 @@
 # Kali Linux Fresh Install Automation Script
+<img width="1376" height="768" alt="image" src="https://github.com/user-attachments/assets/bcb09283-81f2-491e-9fde-423c00b4ec7a" />
+
 
 An automated bash post-installation script designed to rapidly provision a fresh Kali Linux installation. It updates the system core, extracts foundational wordlists, structures clean workspaces, configures an advanced terminal layout emulator, and installs critical Active Directory and Web Enumeration tools directly from official repositories.
 
